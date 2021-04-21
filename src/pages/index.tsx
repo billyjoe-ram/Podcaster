@@ -32,7 +32,7 @@ export default function Home(props) {
 // SSG EXAMPLE
 export async function getStaticProps() {
   const response = await fetch('http://localhost:3333/episodes');
-  const data = response.json();
+  const data = await response.json();
 
   return { 
     props: {
