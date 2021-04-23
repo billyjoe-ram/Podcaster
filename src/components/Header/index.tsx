@@ -1,12 +1,12 @@
 import styles from "./styles.module.scss";
 
-export function Header() {
-    const currentDate = new Date();    
-    const currentYear = currentDate.getFullYear().toString();
+import format from "date-fns/format";
+import ptBR from "date-fns/locale/pt-BR";
 
-    let currentDay = new Date().toDateString();
-    
-    currentDay = currentDay.split(currentYear).shift();
+export function Header() {
+    const currentDate = format(new Date(), "EEEEEE, d MMMM", {
+        locale: ptBR
+    });
 
     return(
         <header className={styles.headerContainer}>
@@ -14,7 +14,7 @@ export function Header() {
 
             <p>Listen to podcasts, always</p>
 
-            <span>{currentDay}</span>
+            <span>{currentDate}</span>
         </header>
     )
 }
